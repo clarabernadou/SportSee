@@ -1,0 +1,41 @@
+.navLeftContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    width: 117px;
+
+    background-color: #020203;
+    color: #FFFFFF;
+
+    margin-top: -90px;
+}
+
+.navLeftContainer p {
+    font-size: 12px;
+    width: max-content;
+    transform: rotate(270deg);
+
+
+    position: absolute;
+    bottom: 70px;
+    text-align: center;
+}
+
+.navLeftIcons ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 0;
+}
+
+.navLeftIcons img {
+    width: 36px;
+    height: 32px;
+    padding: 15px;
+    border-radius: 6px;
+
+    background-color: #FFFFFF;
+}

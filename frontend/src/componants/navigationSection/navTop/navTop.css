@@ -1,0 +1,26 @@
+.navTopContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #020203;
+    color: #FFFFFF;
+
+    height: 91px;
+    width: 100%;
+}
+
+.navTopLogo {
+    width: 178px;
+    height: 60.93px;
+    margin-left: 30px;
+}
+
+.navTopContainer a {
+    margin: 0 90px;
+
+    font-size: 24px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 400;
+}
