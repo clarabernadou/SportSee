@@ -4,3 +4,11 @@ body {
     line-height: 24px;
     margin: 0;
 }
+
+.bodyContainer {
+    display: flex;
+}
+
+.dashboardContent {
+    margin: 70px 100px;
+}
