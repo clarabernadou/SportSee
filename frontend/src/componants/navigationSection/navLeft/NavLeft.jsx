@@ -11,10 +11,10 @@ export default function NavLeft() {
     <div className="navLeftContainer">
       <div className="navLeftIcons">
         <ul>
-          <img src={Yogi}/>
-          <img src={Swimmer}/>
-          <img src={Cyclist}/>
-          <img src={Dumbbell}/>
+          <img src={Yogi} alt="Yoga"/>
+          <img src={Swimmer} alt="Nageur"/>
+          <img src={Cyclist} alt="Cycliste"/>
+          <img src={Dumbbell} alt="Haltère"/>
         </ul>
       </div>
       <p>Copiryght, SportSee 2020</p>
