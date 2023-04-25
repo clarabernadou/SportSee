@@ -1,0 +1,11 @@
+.headerContainer {
+    margin-bottom: 70px;
+}
+
+.headerContainer h1 {
+    font-size: 48px;
+}
+
+.headerContainer p {
+    font-size: 18px;
+}

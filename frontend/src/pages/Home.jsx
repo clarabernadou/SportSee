@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./home.css"
 
 import NavLeft from "../componants/navigationSection/navLeft/NavLeft";
 import NavTop from "../componants/navigationSection/navTop/NavTop"
@@ -16,13 +17,16 @@ export default function Home() {
     };
     fetchData(); // Call the 'fetchData' function when the component mounts
   }, []);
-
   return (
     <>
       <NavTop />
-      {/* Pass the user data to the 'Header' component as a prop */}
-      <Header userData={userData?.userInfos} /> {/* Use the safety operator to avoid errors */}
-      <NavLeft />
+      <div className="bodyContainer">
+        <NavLeft />
+        <div className="dashboardContent">
+          <Header userData={userData?.userInfos} /> {/* Pass the user data to the 'Header' component as a prop & Use the safety operator to avoid errors */}        
+        </div>
+      </div>
+
     </>
   );
 }
