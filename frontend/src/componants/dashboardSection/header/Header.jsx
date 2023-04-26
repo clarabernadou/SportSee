@@ -1,7 +1,7 @@
 import React from 'react';
 import "./header.css"
 
-function Header({ userData }) {
+export default function Header({ userData }) {
   const firstName = userData?.firstName; // Use the safety operator to avoid errors
   console.log(firstName);
   return (
@@ -11,5 +11,3 @@ function Header({ userData }) {
     </div>
   );
 }
-
-export default Header;
