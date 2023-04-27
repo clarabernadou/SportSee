@@ -7,8 +7,8 @@ const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="custom-tooltip" style={{backgroundColor: "#FFFFFF" }}>
-            <p style={{ color: '#000000', fontSize: '8px', textAlign: 'center', margin: '5px 3px'}}>
+        <div className="custom-tooltip">
+            <p style={{ backgroundColor: "#FFFFFF", color: '#000000', fontSize: '8px', textAlign: 'center', padding: '3px 10px', margin: '0px'}}>
               {`${payload[0].value} ${payload[0].dataKey === 'sessionLength' ? 'min' : 'min'}`}
             </p>
         </div>
@@ -31,8 +31,8 @@ export default function ObjectivesChart({ userAverageSessions }) {
     console.log(maxSession, minSession);
     return (
         <div className='objectivesChartContainer'>
-            <ResponsiveContainer width="100%" height="100%">
-                <LineChart width={300} height={100} data={userAverageSessions}>
+            <ResponsiveContainer>
+                <LineChart data={userAverageSessions}>
                   <text 
                       x="5" 
                       y="15" 
