@@ -7,6 +7,10 @@ import Header from "../componants/dashboardSection/header/Header";
 import WeightChart from "../componants/dashboardSection/graphic/weightChart/WeightChart";
 import ObjectivesChart from "../componants/dashboardSection/graphic/objectivesChart/ObjectivesChart";
 
+const userId = process.env.REACT_APP_USER_ID;
+
+console.log(userId);
+
 export default function Home() {
   const [userData, setUserData] = useState(null); // Define a state variable named 'userData' and initialize it to 'null'
   const [userActivity, setUserActivity] = useState(null);
@@ -15,7 +19,7 @@ export default function Home() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/user/18');
+        const response = await fetch(`http://localhost:3000/user/${userId}`);
         const data = await response.json();
         setUserData(data.data);
       } catch (error) {
@@ -28,7 +32,7 @@ export default function Home() {
   useEffect(() => {
     const fetchUserActivity = async () => {
       try {
-        const response = await fetch('http://localhost:3000/user/18/activity');
+        const response = await fetch(`http://localhost:3000/user/${userId}/activity`);
         const data = await response.json();
         setUserActivity(data.data);
       } catch (error) {
@@ -41,7 +45,7 @@ export default function Home() {
   useEffect(() => {
     const fetchAverageSessionsData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/user/18/average-sessions');
+        const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`);
         const data = await response.json();
         setUserAverageSessions(data.data);
       } catch (error) {
