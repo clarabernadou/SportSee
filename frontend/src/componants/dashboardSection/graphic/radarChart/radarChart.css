@@ -1,0 +1,14 @@
+.radarChartContainer {
+    width: 308px;
+    height: 263px;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #282D30;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+    
+    padding: 20px;
+}
