@@ -7,6 +7,7 @@ import Header from "../componants/dashboardSection/header/Header";
 import WeightChart from "../componants/dashboardSection/graphic/weightChart/WeightChart";
 import ObjectivesChart from "../componants/dashboardSection/graphic/objectivesChart/ObjectivesChart";
 import RadarChart from "../componants/dashboardSection/graphic/radarChart/RadarChart";
+import KpiChartComponent from "../componants/dashboardSection/graphic/kpiChart/KpiChart";
 
 const userId = process.env.REACT_APP_USER_ID;
 
@@ -17,6 +18,7 @@ export default function Home() {
   const [userActivity, setUserActivity] = useState(null);
   const [userAverageSessions, setUserAverageSessions] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
+  const [userKpi, setUserKpi] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -69,6 +71,19 @@ export default function Home() {
     };
     fetchPerformanceData();
   }, []);
+
+  useEffect(() => {
+    const fetchKpiData = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/user/${userId}`);
+        const data = await response.json();
+        setUserKpi(data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchKpiData();
+  }, []);
   
   return (
     <>
@@ -80,7 +95,8 @@ export default function Home() {
           <WeightChart userActivity={userActivity?.sessions} />
           <div className="smallCharts">
             <ObjectivesChart userAverageSessions={userAverageSessions?.sessions} />
-            <RadarChart userPerformance={userPerformance} />            
+            <RadarChart userPerformance={userPerformance} />
+            <KpiChartComponent userKpi={userKpi?.score} />            
           </div>
         </div>
       </div>
