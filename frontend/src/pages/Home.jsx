@@ -6,6 +6,7 @@ import NavTop from "../componants/navigationSection/navTop/NavTop"
 import Header from "../componants/dashboardSection/header/Header";
 import WeightChart from "../componants/dashboardSection/graphic/weightChart/WeightChart";
 import ObjectivesChart from "../componants/dashboardSection/graphic/objectivesChart/ObjectivesChart";
+import RadarChart from "../componants/dashboardSection/graphic/radarChart/RadarChart";
 
 const userId = process.env.REACT_APP_USER_ID;
 
@@ -15,6 +16,7 @@ export default function Home() {
   const [userData, setUserData] = useState(null); // Define a state variable named 'userData' and initialize it to 'null'
   const [userActivity, setUserActivity] = useState(null);
   const [userAverageSessions, setUserAverageSessions] = useState(null);
+  const [userPerformance, setUserPerformance] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -54,8 +56,19 @@ export default function Home() {
     };
     fetchAverageSessionsData();
   }, []);
-  
-  console.log(userAverageSessions);
+
+  useEffect(() => {
+    const fetchPerformanceData = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/user/${userId}/performance`);
+        const data = await response.json();
+        setUserPerformance(data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchPerformanceData();
+  }, []);
   
   return (
     <>
@@ -65,7 +78,10 @@ export default function Home() {
         <div className="dashboardContent">
           <Header userData={userData?.userInfos} /> {/* Pass the user data to the 'Header' component as a prop & Use the safety operator to avoid errors */}
           <WeightChart userActivity={userActivity?.sessions} />
-          <ObjectivesChart userAverageSessions={userAverageSessions?.sessions} />
+          <div className="smallCharts">
+            <ObjectivesChart userAverageSessions={userAverageSessions?.sessions} />
+            <RadarChart userPerformance={userPerformance} />            
+          </div>
         </div>
       </div>
 

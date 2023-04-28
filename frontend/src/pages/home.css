@@ -12,3 +12,8 @@ body {
 .dashboardContent {
     margin: 130px 100px;
 }
+
+.smallCharts {
+    display: flex;
+    gap: 30px;
+}
