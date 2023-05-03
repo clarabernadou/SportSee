@@ -5,17 +5,19 @@ import "./objectivesChart.css"
 const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
 
 const CustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="custom-tooltip">
-            <p style={{ backgroundColor: "#FFFFFF", color: '#000000', fontSize: '8px', textAlign: 'center', padding: '3px 10px', margin: '0px'}}>
-              {`${payload[0].value} ${payload[0].dataKey === 'sessionLength' ? 'min' : 'min'}`}
-            </p>
-        </div>
-      );
-    }
-    return null;
+  if (active && payload && payload.length) {
+    return (
+      <div className="custom-tooltip">
+          <p className='timeStyle'>
+            {`${payload[0].value} ${payload[0].dataKey === 'sessionLength' ? 'min' : 'min'}`}
+          </p>
+          <div className="tooltipStyle"></div>
+      </div>
+    );
+  }
+  return null;
 };
+
 
 export default function ObjectivesChart({ userAverageSessions }) {
     let sessionsArray = [];
