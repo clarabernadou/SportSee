@@ -17,7 +17,7 @@ export default function RadarChartComponent({ userPerformance }) {
     
     return (
         <div className='radarChartContainer'>
-            <ResponsiveContainer>
+            <ResponsiveContainer width={258}>
                 <RadarChart cx="50%" cy="50%" outerRadius="80%" data={userPerformance?.data}>
                     <PolarGrid />
                     <PolarAngleAxis dataKey="kind" tickFormatter={(text) => kindTranslations[text]} tick={{ fill: '#ffffff', fontSize: '12px'}} />
