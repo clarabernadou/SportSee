@@ -1,6 +1,6 @@
 .radarChartContainer {
-    width: 308px;
-    height: 263px;
+    width: auto;
+    height: 243px;
     border-radius: 5px;
 
     display: flex;
@@ -9,6 +9,9 @@
 
     background-color: #282D30;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
-    
-    padding: 20px;
+    padding: 20px 20px;
+}
+
+.recharts-surface {
+    overflow: visible;
 }

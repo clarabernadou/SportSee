@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import "./objectivesChart.css"
 
 const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
@@ -19,7 +19,7 @@ const CustomTooltip = ({ active, payload }) => {
 
 export default function ObjectivesChart({ userAverageSessions }) {
     let sessionsArray = [];
-  
+
     userAverageSessions?.map(session => {
         sessionsArray.push(session.sessionLength)
     })
@@ -31,26 +31,46 @@ export default function ObjectivesChart({ userAverageSessions }) {
     console.log(maxSession, minSession);
     return (
         <div className='objectivesChartContainer'>
-            <ResponsiveContainer>
-                <LineChart data={userAverageSessions}>
-                  <text 
-                      x="5" 
-                      y="15" 
-                      textAnchor="start"
-                      fontSize={15} 
-                      fontWeight={500}
-                      fill='#FFFFFF'
-                      opacity={0.5}
-                  >
-                      <tspan x="5" dy="0">{`Durée moyenne des`}</tspan>
-                      <tspan x="5" dy="20">{`sessions`}</tspan>
-                  </text>
-                  <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" strokeWidth={2} yAxisId="right" dot={false} />
-                  <XAxis tickFormatter={(day) => weekDays[day]} axisLine={false} tickLine={false} tick={{ fill: '#FFFFFF', opacity: '0.5' }} />
-                  <YAxis domain={[minSession - 5, maxSession + 5]} yAxisId="right" hide={true} />
-                  <Tooltip content={<CustomTooltip />} />
-                </LineChart>
-            </ResponsiveContainer>          
+          <div className='daysContainer' style={{ display: 'flex', justifyContent: 'space-between', color: '#FFFFFF', fontSize: '12px' }}>
+            {weekDays.map(day => (
+              <text key={day}>{day}</text>
+            ))}
+          </div>
+          <ResponsiveContainer>
+            <LineChart data={userAverageSessions} margin={{ left: -21, right: -20 }} width="110%">
+              <text 
+                x="5" 
+                y="15" 
+                textAnchor="start"
+                fontSize={15} 
+                fontWeight={500}
+                fill='#FFFFFF'
+                opacity={0.5}
+                style={{marginBottom: '20px'}}
+              >
+                <tspan x="5" dy="0">{`Durée moyenne des`}</tspan>
+                <tspan x="5" dy="20">{`sessions`}</tspan>
+              </text>
+              <defs>
+                <linearGradient id="gradient" x1="100%" y1="30%" x2="0%" y2="0%">
+                  <stop offset="5%" stopColor="#ffffff" stopOpacity={0.8}/>
+                  <stop offset="100%" stopColor="#ffffff" stopOpacity={0}/>
+                </linearGradient>
+              </defs>
+              <Line 
+                stroke="url(#gradient)" 
+                type="monotone" 
+                dataKey="sessionLength" 
+                strokeWidth={2} 
+                yAxisId="right" 
+                dot={false} 
+                activeDot={{ r: 4, fill: '#FFFFFF', strokeOpacity: 0.5, strokeWidth: 8 }} 
+                isAnimationActive={false} 
+              />             
+              <YAxis domain={[minSession - 5, maxSession + 10]} yAxisId="right" hide={true} />
+              <Tooltip content={<CustomTooltip />} />
+            </LineChart>
+          </ResponsiveContainer>          
         </div>
       );  
 }

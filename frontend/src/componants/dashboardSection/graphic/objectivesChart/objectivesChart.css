@@ -1,8 +1,9 @@
 .objectivesChartContainer {
-    width: 258px;
-    height: 263px;
+    width: 238px;
+    height: 243px;
 
     display: flex;
+    flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
 
@@ -16,3 +17,26 @@
 .recharts-tooltip-cursor {
     display: none !important;
 }
+
+.daysContainer {
+    width: 100%;
+
+    font-size: 12px;
+
+    color: #FFFFFF;
+    opacity: 0.5;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+
+    width: 500px;
+    height: 500px;
+  }
+  
