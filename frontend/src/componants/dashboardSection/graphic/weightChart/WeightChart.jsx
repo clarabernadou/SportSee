@@ -73,7 +73,7 @@ export default function WeightChart({ userActivity }) {
           <Legend 
             align="right" 
             verticalAlign="top" 
-            wrapperStyle={{ paddingBottom: 50, marginBottom: 30 }}  // Ajout de marginBottom
+            wrapperStyle={{ paddingBottom: 50, marginBottom: 30 }} 
             iconType="circle" 
             iconSize={7} 
             formatter={(value, entry, index) => <span style={{color: "#74798C", marginLeft: 10, marginRight: 30}}>{value}</span>}
