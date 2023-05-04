@@ -18,7 +18,6 @@ export default function Home() {
   const [userActivity, setUserActivity] = useState(null);
   const [userAverageSessions, setUserAverageSessions] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
-  const [userKpi, setUserKpi] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -72,18 +71,7 @@ export default function Home() {
     fetchPerformanceData();
   }, []);
 
-  useEffect(() => {
-    const fetchKpiData = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/user/${userId}`);
-        const data = await response.json();
-        setUserKpi(data.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchKpiData();
-  }, []);
+  console.log(userData);
   
   return (
     <>
@@ -96,7 +84,7 @@ export default function Home() {
           <div className="smallCharts">
             <ObjectivesChart userAverageSessions={userAverageSessions?.sessions} />
             <RadarChart userPerformance={userPerformance} />
-            <KpiChartComponent userKpi={userKpi?.score} />            
+            <KpiChartComponent userKpi={userData?.score ?? userData?.todayScore} />
           </div>
         </div>
       </div>
