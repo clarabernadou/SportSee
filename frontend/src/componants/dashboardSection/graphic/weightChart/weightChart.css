@@ -1,5 +1,5 @@
 .weightChartContainer {
-    width: 835px;
+    width: 873px;
     height: 320px;
 
     display: flex;
@@ -11,4 +11,5 @@
     border-radius: 5px;
 
     padding: 20px;
+    margin-bottom: 30px;
 }
