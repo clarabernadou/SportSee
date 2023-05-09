@@ -8,21 +8,3 @@ body {
 .dashboardContent {
     margin: 130px 100px;
 }
-
-.gap {
-    gap: 30px;
-}
-
-.rowAlignment {
-    display: flex;
-}
-
-.columnAlignment {
-    display: flex;
-    flex-direction: column;
-}
-
-.spaceAround {
-    display: flex;
-    justify-content: space-around;
-}

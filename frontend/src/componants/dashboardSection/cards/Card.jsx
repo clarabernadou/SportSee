@@ -3,7 +3,7 @@ import "./card.css"
 
 export default function card({ children }) {
     return (
-    <div className='card rowAlignment'>
+    <div className='card flex alignItemsCenter'>
         {children[0]}
         <div className='columnAlignment'>
             {children[1]}
