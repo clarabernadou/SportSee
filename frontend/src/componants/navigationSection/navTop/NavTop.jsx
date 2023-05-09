@@ -1,8 +1,11 @@
-import React from "react";
-import Logo from "../../../assets/logo.png"
-import "./navTop.css"
+import React from "react"; // Imports the React library
+import "./navTop.css" // Imports the styles
+
+import Logo from "../../../assets/logo.png" // Imports the image file for the logo
 
 export default function NavTop() {
+
+  // Defines a function that redirects the user to the home page when the logo is clicked
   const home = (e) => {
     e.preventDefault();
     window.location.href = "/";

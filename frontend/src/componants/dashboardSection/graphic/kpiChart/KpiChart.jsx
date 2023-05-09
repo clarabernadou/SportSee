@@ -1,17 +1,21 @@
-import React from 'react';
+import React from 'react'; // Imports the React library
+import "./kpiChart.css"; // Imports the styles
+
 import { PieChart, Pie, Cell, Label } from 'recharts';
-import "./kpiChart.css"
 
 export default function KpiChartComponent({ userKpi }) {
-  const percentage = Math.round(userKpi * 100);
-  const data = [{ name: 'progress', value: percentage }, { name: 'rest', value: 100 - percentage }];
-  const bar = [{ name: 'bar', value: 100 }]
-  const COLORS = ['#FF0000', 'transparent'];
-  
+  const percentage = Math.round(userKpi * 100); // Calculate percentage from userKpi value
+  const data = [{ name: 'progress', value: percentage }, { name: 'rest', value: 100 - percentage }]; // Prepare data array for the Pie chart
+
+  const COLORS = ['#FF0000', 'transparent']; // Define colors for the chart
   return (
     <div className='kpiChartContainer flex alignItemsCenter justifyContentCenter chartsBoxShadow'>
         <PieChart width={258} height={262}>
+            
+            {/* Add the "Score" text */}
             <text x="10" y="20" fontSize="18px" fill="#282D30">Score</text>
+
+            {/* Add white part to remove gap between percentage completed and not completed */}
             <Pie
                 data={data}
                 cx={128}
@@ -27,6 +31,8 @@ export default function KpiChartComponent({ userKpi }) {
                 fill='#FFFFFF'
             >
             </Pie>
+
+            {/* Add red part for percentage completed and a transparent part for percentage not completed. */}
             <Pie
                 data={data}
                 cx={128}
@@ -47,6 +53,8 @@ export default function KpiChartComponent({ userKpi }) {
                     cornerRadius={index === 0 ? "50%" : 0} 
                 />
             ))}
+
+            {/* Add a percentage completed indicator to the chart */}
             <Label
                 textAnchor="middle"
                 dominantBaseline= "ideographic"
