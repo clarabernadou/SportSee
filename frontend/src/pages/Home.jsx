@@ -8,6 +8,7 @@ import WeightChart from "../componants/dashboardSection/graphic/weightChart/Weig
 import ObjectivesChart from "../componants/dashboardSection/graphic/objectivesChart/ObjectivesChart";
 import RadarChart from "../componants/dashboardSection/graphic/radarChart/RadarChart";
 import KpiChartComponent from "../componants/dashboardSection/graphic/kpiChart/KpiChart";
+import ChildrenProps from "../componants/dashboardSection/cards/ChildrenProps";
 
 const userId = process.env.REACT_APP_USER_ID;
 
@@ -70,21 +71,24 @@ export default function Home() {
     };
     fetchPerformanceData();
   }, []);
-
-  console.log(userData);
   
   return (
     <>
       <NavTop />
-      <div className="bodyContainer">
+      <div className="rowAlignment">
         <NavLeft />
         <div className="dashboardContent">
           <Header userData={userData?.userInfos} /> {/* Pass the user data to the 'Header' component as a prop & Use the safety operator to avoid errors */}
-          <WeightChart userActivity={userActivity?.sessions} />
-          <div className="smallCharts">
-            <ObjectivesChart userAverageSessions={userAverageSessions?.sessions} />
-            <RadarChart userPerformance={userPerformance} />
-            <KpiChartComponent userKpi={userData?.score ?? userData?.todayScore} />
+          <div className="rowAlignment gap">
+            <div className="columnAlignment">
+              <WeightChart userActivity={userActivity?.sessions} />
+              <div className="rowAlignment gap">
+                <ObjectivesChart userAverageSessions={userAverageSessions?.sessions} />
+                <RadarChart userPerformance={userPerformance} />
+                <KpiChartComponent userKpi={userData?.score ?? userData?.todayScore} />
+              </div>              
+            </div>
+            <ChildrenProps userData={userData?.keyData} />
           </div>
         </div>
       </div>
