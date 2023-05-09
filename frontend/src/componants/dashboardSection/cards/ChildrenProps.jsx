@@ -17,7 +17,7 @@ export default function childrenProps({ userData }) {
             <Card>
                 <img className='iconCard' src={Flame} alt='' style={{backgroundColor: 'rgba(255, 0, 0, 0.1)'}}/>
                 <div className='columnAlignment'>
-                    <p className='avgNumber'>{userData?.calorieCount}kCal</p>
+                <p className='avgNumber'>{userData?.calorieCount >= 1000 ? (userData?.calorieCount/1000).toLocaleString('fr-FR', {maximumFractionDigits: 3, minimumFractionDigits: 3}) + "kCal" : userData?.calorieCount + "kCal"}</p>
                     <p className='avgName'>Calories</p>
                 </div>
             </Card>
