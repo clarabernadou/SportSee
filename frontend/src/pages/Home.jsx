@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import "./home.css"
+import React, { useEffect, useState } from "react"; // Imports hooks
+import "./home.css" // Imports the styles
 
+// Importing the components
 import NavLeft from "../componants/navigationSection/navLeft/NavLeft";
 import NavTop from "../componants/navigationSection/navTop/NavTop"
 import Header from "../componants/dashboardSection/header/Header";
@@ -10,30 +11,29 @@ import RadarChart from "../componants/dashboardSection/graphic/radarChart/RadarC
 import KpiChartComponent from "../componants/dashboardSection/graphic/kpiChart/KpiChart";
 import ChildrenProps from "../componants/dashboardSection/cards/ChildrenProps";
 
-const userId = process.env.REACT_APP_USER_ID;
-
-console.log(userId);
+const userId = process.env.REACT_APP_USER_ID; // Assigning the user ID to a constant variable
 
 export default function Home() {
-  const [userData, setUserData] = useState(null); // Define a state variable named 'userData' and initialize it to 'null'
+
+  // Creating state for user data, user activity, user average sessions, and user performance
+  const [userData, setUserData] = useState(null);
   const [userActivity, setUserActivity] = useState(null);
   const [userAverageSessions, setUserAverageSessions] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
 
+  // Using the useEffect hook to fetch data when the component mounts
   useEffect(() => {
-    const fetchUserData = async () => {
+    const fetchUserData = async () => { // Creating an async function to fetch user data
       try {
-        const response = await fetch(`http://localhost:3000/user/${userId}`);
-        const data = await response.json();
-        setUserData(data.data);
+        const response = await fetch(`http://localhost:3000/user/${userId}`); // Fetching the user data from the server
+        const data = await response.json(); // Converting the response to JSON
+        setUserData(data.data); // Updating the user data state with the fetched data
       } catch (error) {
-        console.error(error);
+        console.error(error); // Logging any errors to the console
       }
     };
-    fetchUserData();
-  }, []);
 
-  useEffect(() => {
+    // Similar functions for fetching user activity, user average sessions, and user performance data
     const fetchUserActivity = async () => {
       try {
         const response = await fetch(`http://localhost:3000/user/${userId}/activity`);
@@ -43,10 +43,7 @@ export default function Home() {
         console.error(error);
       }
     };
-    fetchUserActivity();
-  }, []);
 
-  useEffect(() => {
     const fetchAverageSessionsData = async () => {
       try {
         const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`);
@@ -56,10 +53,7 @@ export default function Home() {
         console.error(error);
       }
     };
-    fetchAverageSessionsData();
-  }, []);
 
-  useEffect(() => {
     const fetchPerformanceData = async () => {
       try {
         const response = await fetch(`http://localhost:3000/user/${userId}/performance`);
@@ -69,7 +63,8 @@ export default function Home() {
         console.error(error);
       }
     };
-    fetchPerformanceData();
+
+    Promise.all([fetchUserData(), fetchUserActivity(), fetchAverageSessionsData(), fetchPerformanceData()]); // Using Promise.all to fetch all data simultaneously
   }, []);
   
   return (
