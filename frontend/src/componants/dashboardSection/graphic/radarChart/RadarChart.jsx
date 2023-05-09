@@ -16,7 +16,7 @@ export default function RadarChartComponent({ userPerformance }) {
     console.log(kindArray)
     
     return (
-        <div className='radarChartContainer'>
+        <div className='radarChartContainer flex alignItemsCenter justifyContentCenter chartsBoxShadow'>
             <ResponsiveContainer width={258}>
                 <RadarChart cx="50%" cy="50%" outerRadius="80%" data={userPerformance?.data}>
                     <PolarGrid />

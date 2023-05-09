@@ -9,7 +9,7 @@ export default function NavTop() {
   };
 
   return (
-    <div className="navTopContainer">
+    <div className="navTopContainer flex alignItemsCenter">
       <img className="navTopLogo" src={Logo} onClick={home} alt="Logo de SportSee" />
       <ul>
         <a href="/">Accueil</a>

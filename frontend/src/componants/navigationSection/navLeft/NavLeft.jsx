@@ -8,9 +8,9 @@ import Dumbbell from "../../../assets/dumbbell.png"
 
 export default function NavLeft() {
   return (
-    <div className="navLeftContainer">
+    <div className="navLeftContainer flex columnAlignment alignItemsCenter">
       <div className="navLeftIcons">
-        <ul>
+        <ul className="columnAlignment flex">
           <img src={Yogi} alt="Yoga"/>
           <img src={Swimmer} alt="Nageur"/>
           <img src={Cyclist} alt="Cycliste"/>

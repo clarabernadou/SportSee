@@ -9,7 +9,7 @@ export default function KpiChartComponent({ userKpi }) {
   const COLORS = ['#FF0000', 'transparent'];
   
   return (
-    <div className='kpiChartContainer'>
+    <div className='kpiChartContainer flex alignItemsCenter justifyContentCenter chartsBoxShadow'>
         <PieChart width={258} height={262}>
             <text x="10" y="20" fontSize="18px" fill="#282D30">Score</text>
             <Pie

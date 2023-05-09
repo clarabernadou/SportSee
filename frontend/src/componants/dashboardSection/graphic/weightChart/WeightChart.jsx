@@ -36,7 +36,7 @@ export default function WeightChart({ userActivity }) {
   const minCalories = Math.min(...caloriesArray);
 
   return (
-    <div className='weightChartContainer'>
+    <div className='weightChartContainer flex alignItemsCenter justifyContentCenter chartsBoxShadow'>
       <ResponsiveContainer width="100%" height="90%">
         <BarChart
           data={userActivity}

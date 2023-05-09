@@ -3,12 +3,7 @@
     height: 243px;
     border-radius: 5px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     background-color: #FBFBFB;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
     
     padding: 20px;
 }

@@ -1,0 +1,23 @@
+.gap {
+    gap: 30px;
+}
+
+.flex {
+    display: flex;
+}
+
+.columnAlignment {
+    flex-direction: column;
+}
+
+.alignItemsCenter {
+    align-items: center;
+}
+
+.justifyContentCenter {
+    justify-content: center;
+}
+
+.chartsBoxShadow {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+}

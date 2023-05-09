@@ -75,14 +75,14 @@ export default function Home() {
   return (
     <>
       <NavTop />
-      <div className="rowAlignment">
+      <div className="flex">
         <NavLeft />
         <div className="dashboardContent">
           <Header userData={userData?.userInfos} /> {/* Pass the user data to the 'Header' component as a prop & Use the safety operator to avoid errors */}
-          <div className="rowAlignment gap">
+          <div className="flex gap">
             <div className="columnAlignment">
               <WeightChart userActivity={userActivity?.sessions} />
-              <div className="rowAlignment gap">
+              <div className="flex gap">
                 <ObjectivesChart userAverageSessions={userAverageSessions?.sessions} />
                 <RadarChart userPerformance={userPerformance} />
                 <KpiChartComponent userKpi={userData?.score ?? userData?.todayScore} />

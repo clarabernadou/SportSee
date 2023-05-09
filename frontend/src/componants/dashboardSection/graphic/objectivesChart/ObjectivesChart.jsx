@@ -32,7 +32,7 @@ export default function ObjectivesChart({ userAverageSessions }) {
     console.log(userAverageSessions);
     console.log(maxSession, minSession);
     return (
-        <div className='objectivesChartContainer'>
+        <div className='objectivesChartContainer flex alignItemsCenter justifyContentCenter chartsBoxShadow'>
           <div className='daysContainer' style={{ display: 'flex', justifyContent: 'space-between', color: '#FFFFFF', fontSize: '12px' }}>
             {weekDays.map(day => (
               <text key={day}>{day}</text>

@@ -1,15 +1,11 @@
 .objectivesChartContainer {
     width: 238px;
     height: 243px;
-
-    display: flex;
+    
     flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
 
     background: #FF0000;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
     border-radius: 5px;
 
     padding: 20px;
