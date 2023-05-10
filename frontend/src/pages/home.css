@@ -8,3 +8,14 @@ body {
 .dashboardContent {
     margin: 130px 100px;
 }
+
+@media only screen and (max-width: 1024px) and (max-height: 780px) {
+    body {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    
+    .dashboardContent {
+        margin: 100px 50px;
+    }
+}
