@@ -80,7 +80,7 @@ export default function KpiChartComponent({ userKpi }) {
                 value={`objectif`}
                 dominantBaseline= "ideographic"
                 position="center"
-                dy={isSmallScreen ? 35 : 45}
+                dy={isSmallScreen ? 35 : 55}
                 fill='#74798C'
                 fontSize={isSmallScreen ? 12 : 16}
                 fontWeight={500}
