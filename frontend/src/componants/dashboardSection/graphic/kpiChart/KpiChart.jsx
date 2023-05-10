@@ -1,4 +1,5 @@
 import React from 'react'; // Imports the React library
+import { useMediaQuery } from 'react-responsive';
 import "./kpiChart.css"; // Imports the styles
 
 import { PieChart, Pie, Cell, Label } from 'recharts';
@@ -8,20 +9,22 @@ export default function KpiChartComponent({ userKpi }) {
   const data = [{ name: 'progress', value: percentage }, { name: 'rest', value: 100 - percentage }]; // Prepare data array for the Pie chart
 
   const COLORS = ['#FF0000', 'transparent']; // Define colors for the chart
+
+  const isSmallScreen = useMediaQuery({ query: '(max-width: 1024px)' });
   return (
     <div className='kpiChartContainer flex alignItemsCenter justifyContentCenter chartsBoxShadow'>
         <PieChart width={258} height={262}>
             
             {/* Add the "Score" text */}
-            <text x="10" y="20" fontSize="18px" fill="#282D30">Score</text>
+            <text x={isSmallScreen ? 42 : 10} y={isSmallScreen ? 57 : 20} fontSize={isSmallScreen ? 13 : 18} fill="#282D30">Score</text>
 
             {/* Add white part to remove gap between percentage completed and not completed */}
             <Pie
                 data={data}
-                cx={128}
-                cy={131}
-                innerRadius={100}
-                outerRadius={115}
+                cx={isSmallScreen ? 120 : 128}
+                cy={isSmallScreen ? 125 : 131}
+                innerRadius={isSmallScreen ? 70 : 100}
+                outerRadius={isSmallScreen ? 77.5 : 115}
                 startAngle={90}
                 endAngle={450}
                 paddingAngle={0}
@@ -35,10 +38,10 @@ export default function KpiChartComponent({ userKpi }) {
             {/* Add red part for percentage completed and a transparent part for percentage not completed. */}
             <Pie
                 data={data}
-                cx={128}
-                cy={131}
-                innerRadius={100}
-                outerRadius={115}
+                cx={isSmallScreen ? 120 : 128}
+                cy={isSmallScreen ? 125 : 131}
+                innerRadius={isSmallScreen ? 70 : 100}
+                outerRadius={isSmallScreen ? 77.5 : 115}
                 startAngle={90}
                 endAngle={450}
                 paddingAngle={0}
@@ -61,25 +64,25 @@ export default function KpiChartComponent({ userKpi }) {
                 position="center"
                 value={`${percentage}%`}
                 fill='#282D30'
-                fontSize={26}
+                fontSize={isSmallScreen ? 18 : 26}
                 fontWeight={500}
             />
             <Label
                 value={`de votre`}
                 dominantBaseline= "ideographic"
                 position="center"
-                dy={30}
+                dy={isSmallScreen ? 20 : 30}
                 fill='#74798C'
-                fontSize={16}
+                fontSize={isSmallScreen ? 12 : 16}
                 fontWeight={500}
             />
             <Label
                 value={`objectif`}
                 dominantBaseline= "ideographic"
                 position="center"
-                dy={55}
+                dy={isSmallScreen ? 35 : 45}
                 fill='#74798C'
-                fontSize={16}
+                fontSize={isSmallScreen ? 12 : 16}
                 fontWeight={500}
             />
             </Pie>

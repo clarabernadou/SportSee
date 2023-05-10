@@ -60,8 +60,8 @@ export default function ObjectivesChart({ userAverageSessions }) {
             opacity={0.5}
             style={{marginBottom: '20px'}}
           >
-            <tspan x="5" dy="0">{`Durée moyenne des`}</tspan>
-            <tspan x="5" dy="20">{`sessions`}</tspan>
+            <tspan x="5" dy="0" className='tspanFontSize'>{`Durée moyenne des`}</tspan>
+            <tspan x="5" dy="20" className='tspanFontSize'>{`sessions`}</tspan>
           </text>
 
           {/* Define a gradient for the line */}
