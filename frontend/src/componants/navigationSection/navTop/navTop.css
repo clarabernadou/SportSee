@@ -26,3 +26,20 @@
     text-decoration: none;
     font-weight: 400;
 }
+
+@media only screen and (max-width: 1024px) and (max-height: 780px) {
+    .navTopContainer {
+        height: 71px;
+    }
+    
+    .navTopLogo {
+        width: 150px;
+        height: 51.45px;
+        margin-left: 20px;
+    }
+    
+    .navTopContainer a {
+        margin: 0 60px;
+        font-size: 20px;
+    }
+}

@@ -31,3 +31,28 @@
 
     background-color: #FFFFFF;
 }
+
+@media only screen and (max-width: 1024px) and (max-height: 780px) {
+    .navLeftContainer {
+        height: auto;
+        width: 70px;
+        margin-top: 30px;
+    }
+    
+    .navLeftContainer p {
+        font-size: 10px;
+    }
+    
+    .navLeftIcons ul {
+        column-gap: 10px;
+        padding: 10px 0;
+    }
+    
+    .navLeftIcons img {
+        width: 23px;
+        height: 21px;
+        padding: 8px;
+        border-radius: 4px;
+        background-color: #FFFFFF;
+    }
+}

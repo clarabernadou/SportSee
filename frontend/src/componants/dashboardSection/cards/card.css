@@ -31,3 +31,29 @@
     padding: 20px;
     border-radius: 6px;
 }
+
+@media only screen and (max-width: 1024px) and (max-height: 780px) {
+    .cardsContainer {
+        gap: 30px;
+    }
+    
+    .card {
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    .avgNumber {
+        font-size: 18px;
+    }
+    
+    .avgName {
+        font-size: 12px;
+    }
+    
+    .iconCard {
+        width: 16px;
+        height: 16px;
+        padding: 15px;
+        border-radius: 4px;
+    }
+}
