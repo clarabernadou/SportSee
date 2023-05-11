@@ -34,8 +34,8 @@
 }
 
 .differentSize {
-    width: 13px !important;
-    padding: 15px 16px !important;
+    width: 15px !important;
+    padding: 20px 22px !important;
 }
 
 @media only screen and (max-width: 1024px) and (max-height: 780px) {
@@ -57,5 +57,10 @@
         height: 16px;
         padding: 15px;
         border-radius: 4px;
+    }
+
+    .differentSize {
+        width: 12px !important;
+        padding: 15px 17px !important;
     }
 }
