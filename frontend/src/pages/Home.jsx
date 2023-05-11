@@ -25,7 +25,7 @@ export default function Home() {
   useEffect(() => {
     // If localhost of the front-end app uses localhost:300, use the data DEV
     if(window.location.port === '3000'){
-      console.log("L'application fonctionne sur data.json", data);
+      console.log("Your data is from data.js", data);
 
       // Creating an async function to fetch user data
       const fetchUserData = () => {
@@ -65,6 +65,8 @@ export default function Home() {
     
     // If localhost of the back-end app uses localhost:300, use the data PROD
     }else{
+      console.log("Your data is from localhost:300");
+
       // Creating an async function to fetch user data
       const fetchUserData = async () => {
         try {
