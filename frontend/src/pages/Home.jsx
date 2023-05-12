@@ -13,6 +13,8 @@ import KpiChartComponent from "../componants/dashboardSection/graphic/kpiChart/K
 import ChildrenProps from "../componants/dashboardSection/cards/ChildrenProps";
 
 const userId = process.env.REACT_APP_USER_ID; // Assigning the user ID to a constant variable
+const useMockData = process.env.REACT_APP_MOCK_DATA === "true"
+
 
 export default function Home() {
 
@@ -23,8 +25,8 @@ export default function Home() {
   const [userPerformance, setUserPerformance] = useState(null);
 
   useEffect(() => {
-    // If localhost of the front-end app uses localhost:300, use the data DEV
-    if(window.location.port === '3000'){
+    // If useMockData = true, use the data DEV
+    if(useMockData){
       console.log("Your data is from data.js", data);
 
       // Creating an async function to fetch user data
@@ -62,10 +64,8 @@ export default function Home() {
       };
 
       Promise.all([fetchUserData(), fetchUserActivity(), fetchAverageSessionsData(), fetchPerformanceData()]);
-    
-    // If localhost of the back-end app uses localhost:300, use the data PROD
     }else{
-      console.log("Your data is from localhost:300");
+      console.log("Your data is from localhost:3000");
 
       // Creating an async function to fetch user data
       const fetchUserData = async () => {
@@ -111,7 +111,7 @@ export default function Home() {
   
       Promise.all([fetchUserData(), fetchUserActivity(), fetchAverageSessionsData(), fetchPerformanceData()]);
     }
-  }, [userId]);
+  }, [userId, useMockData]);
   return (
     <>
       <NavTop />
