@@ -21,7 +21,6 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 export default function ObjectivesChart({ userAverageSessions }) {
-
   // Extracting the session lengths from the userAverageSessions prop
   let sessionsArray = [];
   userAverageSessions?.map(session => {
@@ -30,14 +29,13 @@ export default function ObjectivesChart({ userAverageSessions }) {
   
   // Calculating the maximum and minimum values for the y-axis domains
   const maxSession = Math.max(...sessionsArray); const minSession = Math.min(...sessionsArray);
-    
   return (
     <div className='objectivesChartContainer flex alignItemsCenter justifyContentCenter chartsBoxShadow'>
       <div className='daysContainer' style={{ display: 'flex', justifyContent: 'space-between', color: '#FFFFFF', fontSize: '12px' }}>
 
         {/* Adding the abbreviated names of the days of the week */}
-        {weekDays.map(day => (
-          <text key={day}>{day}</text>
+        {weekDays.map((day, index) => (
+          <span key={index}>{day}</span>
         ))}
 
       </div>
