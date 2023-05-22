@@ -54,11 +54,16 @@ export const DataProvider = ({ children }) => {
     fetchData(); // Call the data fetching function
   }, []);
 
+  const renamedUserData = userData && {
+    ...userData,
+    score: userData.todayScore
+  };
+
   // Providing the data through the context provider
   return (
     <DataContext.Provider
       value={{
-        userData,
+        userData: renamedUserData,
         userActivity,
         userAverageSessions,
         userPerformance,
