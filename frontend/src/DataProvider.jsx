@@ -10,7 +10,6 @@ class UserMainDataModel {
     this.id = id;
     this.userInfos = userInfos;
     this.score = score || todayScore;
-    this.todayScore = todayScore;
     this.keyData = keyData;
   }
 }
