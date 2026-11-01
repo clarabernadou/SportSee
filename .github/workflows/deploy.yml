@@ -31,6 +31,7 @@ jobs:
           CI: false
           PUBLIC_URL: /SportSee
       - run: cp build/index.html build/404.html
+      - run: cp -r ../api-docs build/api-docs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: frontend/build

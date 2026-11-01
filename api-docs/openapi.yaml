@@ -1,0 +1,202 @@
+openapi: 3.0.3
+info:
+  title: SportSee — API back-end
+  version: 1.0.0
+  description: |
+    API REST d'exemple fournie avec le projet SportSee, un tableau de bord d'analytique sportive : informations d'un utilisateur, activité quotidienne, durée moyenne des séances et performances.
+
+    Cette documentation est rédigée à partir du code du dépôt (routes, modèles et données d'exemple). Elle décrit l'API ; aucun serveur n'est hébergé ici. La démonstration en ligne utilise les données d'exemple du projet (utilisateurs 12 et 18).
+
+    Il n'y a pas d'authentification. Chaque réponse réussie enveloppe les données dans un objet `data`. Les seuls utilisateurs connus sont les identifiants **12** et **18**.
+servers:
+  - url: http://localhost:3000
+    description: Serveur local (port 3000)
+tags:
+  - name: Utilisateur
+paths:
+  /user/{id}:
+    get:
+      tags: [Utilisateur]
+      summary: Informations principales d'un utilisateur
+      description: "Renvoie le profil, le score du jour et les données nutritionnelles. Le score est dans `todayScore` pour l'utilisateur 12 et dans `score` pour l'utilisateur 18 : les données d'exemple n'utilisent pas le même nom de champ."
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Utilisateur trouvé
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UserMainData'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /user/{id}/activity:
+    get:
+      tags: [Utilisateur]
+      summary: Activité quotidienne
+      description: Poids et calories brûlées, jour par jour.
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Activité trouvée
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UserActivity'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /user/{id}/average-sessions:
+    get:
+      tags: [Utilisateur]
+      summary: Durée moyenne des séances
+      description: "Durée moyenne des séances par jour de la semaine (le jour 1 est un lundi)."
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Durées trouvées
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UserAverageSessions'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /user/{id}/performance:
+    get:
+      tags: [Utilisateur]
+      summary: Performances
+      description: "Valeurs de performance par catégorie (cardio, énergie, endurance, force, vitesse, intensité)."
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Performances trouvées
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UserPerformance'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: "Identifiant de l'utilisateur (12 ou 18 dans les données d'exemple)"
+      schema:
+        type: integer
+        example: 12
+  responses:
+    NotFound:
+      description: Utilisateur inconnu
+      content:
+        application/json:
+          schema:
+            type: string
+          example: can not get user
+  schemas:
+    UserMainData:
+      type: object
+      properties:
+        id:
+          type: integer
+        userInfos:
+          type: object
+          properties:
+            firstName:
+              type: string
+            lastName:
+              type: string
+            age:
+              type: integer
+        todayScore:
+          type: number
+          description: Score du jour entre 0 et 1 (présent pour l'utilisateur 12)
+        score:
+          type: number
+          description: Score du jour entre 0 et 1 (présent pour l'utilisateur 18)
+        keyData:
+          type: object
+          properties:
+            calorieCount:
+              type: integer
+            proteinCount:
+              type: integer
+            carbohydrateCount:
+              type: integer
+            lipidCount:
+              type: integer
+    UserActivity:
+      type: object
+      properties:
+        userId:
+          type: integer
+        sessions:
+          type: array
+          items:
+            type: object
+            properties:
+              day:
+                type: string
+                format: date
+              kilogram:
+                type: integer
+              calories:
+                type: integer
+    UserAverageSessions:
+      type: object
+      properties:
+        userId:
+          type: integer
+        sessions:
+          type: array
+          items:
+            type: object
+            properties:
+              day:
+                type: integer
+                minimum: 1
+                maximum: 7
+              sessionLength:
+                type: integer
+                description: Durée moyenne en minutes
+    UserPerformance:
+      type: object
+      properties:
+        userId:
+          type: integer
+        kind:
+          type: object
+          description: Correspondance entre le numéro de catégorie et son nom
+          additionalProperties:
+            type: string
+          example:
+            '1': cardio
+            '2': energy
+            '3': endurance
+            '4': strength
+            '5': speed
+            '6': intensity
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: integer
+              kind:
+                type: integer
